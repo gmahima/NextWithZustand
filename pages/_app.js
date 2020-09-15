@@ -24,10 +24,9 @@ body {
 `
 export const useStore = create(set => ({
   players: initialPlayers,
-  incrementPlayerScore: () => (set(state => {
+  incrementPlayerScore: (id) => (set(state => {
     console.log(state.players)
     const n = [...state.players]
-    const id = '1'
     const player = n.find(p => p.id === id)
     console.log(player)
     player.score = player.score+10;
