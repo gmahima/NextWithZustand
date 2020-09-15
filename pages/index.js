@@ -7,7 +7,6 @@ import {useStore} from './_app'
 export default function Home() {
   const players = useStore(state => state.players)
   const inc = useStore(state => state.incrementPlayerScore)
-  const useInc = (id) => {inc(id)}
   
   return (
   <div>{players.map(p => {
@@ -28,7 +27,10 @@ export default function Home() {
 //   const players = useStore(state => state.players)
 //   const incrementPlayerScore = () => {
 //     return (
-//       useStore(state => state.incrementPlayerScore)
+//       useStore(state => state.incrementPlayerScore) //cant call use store in an anonymous js function
+// right way is to extract the function:
+// inc = useStore(state => state.incrementPlayerScore)
+// and call the function wherever you want: inc(id)
 //     )
 //   }
 //   return (
