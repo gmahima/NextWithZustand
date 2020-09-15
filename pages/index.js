@@ -22,4 +22,27 @@ export default function Home() {
   )
 
 }
+  // wrong
+// export default function Home() {
+
+//   const players = useStore(state => state.players)
+//   const incrementPlayerScore = () => {
+//     return (
+//       useStore(state => state.incrementPlayerScore)
+//     )
+//   }
+//   return (
+//   <div>{players.map(p => {
+//     return (
+//       <div>
+//         <span>{p.name} |</span>
+//         <span> {p.score} | </span>
+//         <button onClick={() => (useStore(state => state.incrementPlayerScore(p.id)))}> increment </button>
+//       </div>
+//     )
+//   })}</div>
+//   )
+
+// }
+//wrong 
   
