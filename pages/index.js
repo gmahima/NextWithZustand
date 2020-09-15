@@ -2,12 +2,14 @@ import React, {useContext} from 'react'
 import Head from 'next/head'
 import styled, {css} from 'styled-components'
 import tw from 'twin.macro'
-import {GlobalContext} from '../context/global'
+import {useStore} from './_app'
+// import {GlobalContext} from '../context/global'
 
 export default function Home() {
 
-  const c = useContext(GlobalContext)
-  console.log(c)
+  // const c = useContext(GlobalContext)
+  const players = useStore(state => state.players)
+  console.log(players)
   return <div></div>
 
 }
