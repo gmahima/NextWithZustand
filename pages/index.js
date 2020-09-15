@@ -12,10 +12,10 @@ export default function Home() {
   return (
   <div>{players.map(p => {
     return (
-      <div>
+      <div key={p.id}>
         <span>{p.name} |</span>
         <span> {p.score} | </span>
-        <button onClick={() => {useInc(p.id)}}> increment </button>
+        <button onClick={() => {inc(p.id)}}> increment </button>
       </div>
     )
   })}</div>
