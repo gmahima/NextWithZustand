@@ -3,16 +3,16 @@ import Head from 'next/head'
 import styled, {css} from 'styled-components'
 import shallow from 'zustand/shallow'
 import tw from 'twin.macro'
-import {useStore} from './_app'
+import {usePlayerStore} from './_app'
 import Player from '../components/Player'
 export default function Home() {
-  const {players, highScore} = useStore(state => ({players: state.players, highScore: state.highScore}), shallow)
+  const {players, highScore} = usePlayerStore(state => ({players: state.players, highScore: state.highScore}), shallow)
   
   return (
     <div css={tw `flex flex-col sm:p-32 sm:space-y-8 text-center`}>
       <div css={tw `flex flex-col`}>
       <h1 css={tw `text-black text-6xl`}>Scoreboard</h1>
-      <h2 css={tw `mt-8 py-2 px-8 self-center border-2 border-green-400 rounded-lg font-semibold `}>High Score: {highScore}</h2>
+      <h2 css={tw `mt-8 py-2 px-8 self-center border-2 border-green-400 rounded-lg font-semibold`}>High Score: {highScore}</h2>
       </div>
       <div css={tw`bg-white border shadow-lg py-4 px-32 w-2/3 h-72 overscroll-y-auto overflow-auto flex flex-col rounded-lg self-center`}>
         {players.map(p => {

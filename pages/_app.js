@@ -22,7 +22,7 @@ body {
   ${tw `bg-gray-100 text-gray-900 sm:text-xl `}
 }
 `
-export const useStore = create(set => ({
+export const usePlayerStore = create(set => ({
   players: initialPlayers,
   highScore: 0,
   setHighScore: (s => set({highScore: s})),
@@ -55,9 +55,10 @@ export const useStore = create(set => ({
 
   })),
   removeAllPlayers: () => set({ players: [] })
-  
+}))
 
-
+export const useVipStore = create(set => ({
+  vips: ['10', '2', '5']
 }))
 
 function MyApp({ Component, pageProps }) {
