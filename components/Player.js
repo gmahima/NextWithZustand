@@ -2,6 +2,10 @@ import styled, {css} from 'styled-components'
 import tw from 'twin.macro';
 import {Plus, Minus} from '@styled-icons/boxicons-regular'
 import {Star} from '@styled-icons/boxicons-solid/Star'
+import {useStore} from '../pages/_app'
+
+
+
 const PlayerDiv = styled.div `
 ${tw `
     flex flex-row p-2 justify-between border-b items-center mt-12
@@ -16,20 +20,23 @@ h1 {
 const StyledStar = styled(Star) `
 ${tw `text-gray-400 w-8 h-8`}
 ${props => {
-    if(props.isInLead) {
-        return tw`text-yellow-400`
+    if(props.hasHighScore) {
+        return tw`text-green-400`
     }
 }}
 `
-export default function Player ({player, handleInc, handleDec}) {
+export default function Player ({player}) {
+    const inc = useStore(state => state.incrementPlayerScore)
+    const dec = useStore(state => state.decrementPlayerScore)
+    const highScore = useStore(state => state.highScore)
     return(
         <PlayerDiv>
-            {/* <StyledStar isInLead></StyledStar> */}
+            <StyledStar hasHighScore={player.score === highScore}></StyledStar>
             <h1>{player.name}</h1>
             <div>
-                <button onClick={() => {handleInc(player.id)}}><Plus css={tw `w-4 h-4 text-gray-600`}></Plus></button>
+                <button onClick={() => {inc(player.id)}}><Plus css={tw `w-4 h-4 text-gray-600`}></Plus></button>
                 <span css={tw `align-middle mx-4`}>{player.score}</span>
-                <button onClick={() => {handleDec(player.id)}}><Minus css={tw `w-4 h-4 text-gray-600`}></Minus></button>
+                <button onClick={() => {dec(player.id)}}><Minus css={tw `w-4 h-4 text-gray-600`}></Minus></button>
             </div>
             
         </PlayerDiv>

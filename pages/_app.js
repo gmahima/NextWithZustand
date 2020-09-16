@@ -19,17 +19,25 @@ const initialPlayers = [
 
 const GlobalStyles = createGlobalStyle`
 body {
-  ${tw `bg-gray-200 text-gray-900 sm:text-xl `}
+  ${tw `bg-gray-100 text-gray-900 sm:text-xl `}
 }
 `
 export const useStore = create(set => ({
   players: initialPlayers,
+  highScore: 0,
+  setHighScore: (s => set({highScore: s})),
   incrementPlayerScore: (id) => (set(state => {
     console.log(state.players)
     const n = [...state.players]
     const player = n.find(p => p.id === id)
     console.log(player)
     player.score = player.score+10;
+    if(player.score > state.highScore) {
+      return ({
+        players: n,
+        highScore: player.score
+      })
+    }
     return ({
       players: n
     })
@@ -47,6 +55,9 @@ export const useStore = create(set => ({
 
   })),
   removeAllPlayers: () => set({ players: [] })
+  
+
+
 }))
 
 function MyApp({ Component, pageProps }) {
