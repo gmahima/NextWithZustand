@@ -14,7 +14,7 @@ export default function Home() {
       <div css={tw ``}>
       <h1 css={tw `text-black text-6xl`}>Scoreboard</h1>
       </div>
-      <div css={tw`bg-white shadow-xl p-2 w-2/3 h-72 overscroll-y-auto overflow-auto`}>
+      <div css={tw`bg-white shadow-xl py-4 px-32 w-2/3 h-72 overscroll-y-auto overflow-auto flex flex-col rounded-lg`}>
         {players.map(p => {
           return (
             <Player player={p} handleInc={(id) => {inc(id)}} handleDec={id => {dec(id)}}/>

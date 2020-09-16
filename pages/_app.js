@@ -19,7 +19,7 @@ const initialPlayers = [
 
 const GlobalStyles = createGlobalStyle`
 body {
-  ${tw `bg-gray-200 text-gray-900 sm:text-2xl `}
+  ${tw `bg-gray-200 text-gray-900 sm:text-xl `}
 }
 `
 export const useStore = create(set => ({
