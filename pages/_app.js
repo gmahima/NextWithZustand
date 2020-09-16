@@ -22,8 +22,9 @@ body {
   ${tw `bg-gray-100 text-gray-900 sm:text-xl `}
 }
 `
-export const usePlayerStore = create(set => ({
+export const usePlayerStore = create((set,get) => ({
   players: initialPlayers,
+  sounds: ['yay', 'wohoo', 'hah!', 'I am the best'],
   highScore: 0,
   setHighScore: (s => set({highScore: s})),
   incrementPlayerScore: (id) => (set(state => {
@@ -33,6 +34,9 @@ export const usePlayerStore = create(set => ({
     console.log(player)
     player.score = player.score+10;
     if(player.score > state.highScore) {
+      const sounds = get().sounds;
+      const i = Math.floor(Math.random()*sounds.length); 
+      console.log(player.name+ " says: "+ sounds[i])
       return ({
         players: n,
         highScore: player.score
@@ -54,7 +58,7 @@ export const usePlayerStore = create(set => ({
     })
 
   })),
-  deleteEverything: () => (set ({}, true))
+  deleteEverything: () => (set ({}, true)) // true replaces state model instead of merging it
 }))
 
 export const useVipStore = create(set => ({
