@@ -54,7 +54,7 @@ export const usePlayerStore = create(set => ({
     })
 
   })),
-  removeAllPlayers: () => set({ players: [] })
+  deleteEverything: () => (set ({}, true))
 }))
 
 export const useVipStore = create(set => ({

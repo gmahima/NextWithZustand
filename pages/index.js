@@ -5,11 +5,14 @@ import shallow from 'zustand/shallow'
 import tw from 'twin.macro'
 import {usePlayerStore} from './_app'
 import Player from '../components/Player'
+
 export default function Home() {
-  const {players, highScore} = usePlayerStore(state => ({players: state.players, highScore: state.highScore}), shallow)
+  const {players, highScore, deleteEverything} = usePlayerStore(state => ({players: state.players, highScore: state.highScore, deleteEverything:state.deleteEverything}), shallow)
   
   return (
+
     <div css={tw `flex flex-col sm:p-32 sm:space-y-8 text-center`}>
+      <button  css={tw `border-2`} onClick={deleteEverything}>delete everything</button>
       <div css={tw `flex flex-col`}>
       <h1 css={tw `text-black text-6xl`}>Scoreboard</h1>
       <h2 css={tw `mt-8 py-2 px-8 self-center border-2 border-green-400 rounded-lg font-semibold`}>High Score: {highScore}</h2>
