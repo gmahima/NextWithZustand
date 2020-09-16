@@ -6,6 +6,8 @@ import {usePlayerStore, useVipStore} from '../pages/_app'
 import {Vip} from '@styled-icons/remix-line/Vip'
 
 
+const unsub = usePlayerStore.subscribe(console.log, state => state.players)
+
 const PlayerDiv = styled.div `
 ${tw `
     flex flex-row p-2 justify-between border-b items-center mt-12
