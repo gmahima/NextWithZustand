@@ -1,8 +1,8 @@
 import 'tailwindcss/dist/base.min.css'
 import styled, {createGlobalStyle} from 'styled-components'
 import tw from 'twin.macro';
-// import {GlobalContextProvider} from '../context/global'
 import create from 'zustand'
+import { devtools } from 'zustand/middleware'
 
 const initialPlayers = [
   {
@@ -22,7 +22,7 @@ body {
   ${tw `bg-gray-100 text-gray-900 sm:text-xl `}
 }
 `
-export const usePlayerStore = create((set,get) => ({
+const playerStore = (set,get) => ({
   players: initialPlayers,
   sounds: ['yay', 'wohoo', 'hah!', 'I am the best'],
   highScore: 0,
@@ -59,7 +59,9 @@ export const usePlayerStore = create((set,get) => ({
 
   })),
   deleteEverything: () => (set ({}, true)) // true replaces state model instead of merging it
-}))
+})
+
+export const usePlayerStore = create(devtools(playerStore))
 
 export const useVipStore = create(set => ({
   vips: ['10', '2', '5']
@@ -68,10 +70,6 @@ export const useVipStore = create(set => ({
 function MyApp({ Component, pageProps }) {
   
   return (
-    // <GlobalContextProvider>
-    //   <GlobalStyles/>
-    //   <Component {...pageProps} />
-    // </GlobalContextProvider>
     <>
       <GlobalStyles/>
       <Component {...pageProps} />
