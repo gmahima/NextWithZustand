@@ -19,7 +19,7 @@ const initialPlayers = [
 
 const GlobalStyles = createGlobalStyle`
 body {
-  ${tw `bg-gray-900 text-gray-400`}
+  ${tw `bg-gray-200 text-gray-900 sm:text-2xl `}
 }
 `
 export const useStore = create(set => ({
@@ -30,6 +30,17 @@ export const useStore = create(set => ({
     const player = n.find(p => p.id === id)
     console.log(player)
     player.score = player.score+10;
+    return ({
+      players: n
+    })
+
+  })),
+  decrementPlayerScore: (id) => (set(state => {
+    console.log(state.players)
+    const n = [...state.players]
+    const player = n.find(p => p.id === id)
+    console.log(player)
+    player.score = player.score-10;
     return ({
       players: n
     })

@@ -12,6 +12,8 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "styled-components": "^5.2.0",
-    "twin.macro": "^1.9.0"
+    "styled-icons": "^10.20.0",
+    "twin.macro": "^1.9.0",
+    "zustand": "^3.1.2"
   }
 }
