@@ -1,42 +1,50 @@
 {
-    "players": [
-      {
-          "name": "Harry",
-          "id": "1"
-      },
-      {
-        "name": "Hermione",
-        "id": "2"
+  "players": [
+    {
+      "name": "Harry",
+      "id": "1"
     },
     {
-        "name": "Ron",
-        "id": "3"
+      "name": "Hermione",
+      "id": "2"
     },
     {
-        "name": "Neville",
-        "id": "4"
+      "name": "Ron",
+      "id": "3"
     },
     {
-        "name": "Ginny",
-        "id": "5"
+      "name": "Neville",
+      "id": "4"
     },
     {
-        "name": "Luna",
-        "id": "6"
+      "name": "Ginny",
+      "id": "5"
     },
     {
-        "name": "Fred",
-        "id": "7"
+      "name": "Luna",
+      "id": "6"
     },
     {
-        "name": "George",
-        "id": "8"
+      "name": "Fred",
+      "id": "7"
     },
     {
-        "name": "Harry",
-        "id": "9"
+      "name": "George",
+      "id": "8"
+    },
+    {
+      "name": "Harry",
+      "id": "9"
+    },
+    {
+      "name": "Lupin",
+      "id": "10",
+      "score": 0
     }
-    ],
-    "vips": ["2", "4", "8"]
+  ],
+  "vips": [
+    "2",
+    "4",
+    "8"
+  ]
 }
-

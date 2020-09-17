@@ -42,6 +42,33 @@ const handleAddPlayer = (set, get, name) =>{
     p.id = (n.length+1).toString();
     p.score = 0;
     n.push(p)
+    fetch(Url, {
+      method: 'POST',
+      body: JSON.stringify(p),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'same-origin'
+
+    }).then(res => {
+        if(res.ok) {
+            return res
+        }
+        else {
+            let err = res.json()
+            err.res = res;
+            throw err; 
+        }
+    }, error => {
+        console.log("error: ", error)
+        let errmes = new Error(error.message)
+        throw(errmes)
+    })
+    .then(res => res.json())
+    .then(res => console.log(res))
+    .catch(error =>{console.log(error)})
+
+
     return ({
       players: n
     })
