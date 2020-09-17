@@ -1,6 +1,6 @@
 import create from 'zustand'
 import { devtools } from 'zustand/middleware'
-
+const Url = 'http://localhost:3004/players'
 const initialPlayers = [
     {
         id: "1",
@@ -14,9 +14,25 @@ const initialPlayers = [
     }
   ]
 
-const handleLoadPlayers = (set, get) => {
-    let p = get().players
-    console.log(p)
+const handleLoadPlayers = async (set, get) => {
+  fetch(Url)
+  .then(res => {
+      if(res.ok) {
+          return res
+      }
+  }, 
+  error => {
+      console.log("error: ", error)
+      let errmes = new Error(error.message)
+      throw(errmes)
+  })
+  .then(res => res.json())
+  .then(players => {
+    console.log(players);
+    set({players: players})
+
+  })
+  .catch(error =>{console.log(error)})
 }
 const handleAddPlayer = (set, get, name) =>{
   set(state => {
@@ -73,7 +89,7 @@ const sounds = ['yay', 'wohoo', 'hah!', 'I am the best']
   
 const playerStore = (set,get) => ({
     players: initialPlayers,
-    loadPlayers: () => {handleLoadPlayers(set, get)},
+    loadPlayers: async () => { await handleLoadPlayers(set, get)},
     addPlayer: (name) => {handleAddPlayer(set,get, name)},
     sounds: sounds,
     highScore: 0,

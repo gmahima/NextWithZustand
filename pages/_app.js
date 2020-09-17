@@ -4,7 +4,7 @@ import React, {useEffect} from 'react'
 import tw from 'twin.macro';
 import Head from 'next/head'
 import usePlayerStore from '../stores/usePlayerStore'
-
+import useVipStore from '../stores/useVipStore'
 const GlobalStyles = createGlobalStyle`
 body {
   ${tw `bg-gray-100 text-gray-900 sm:text-xl `}
@@ -13,8 +13,10 @@ body {
 
 function MyApp({ Component, pageProps }) {
   const loadPlayers = usePlayerStore(state => state.loadPlayers)
+  const loadVips = useVipStore(state => state.loadVips)
   useEffect(() => {
     loadPlayers()
+    loadVips()
 }, [])
   
   return (
