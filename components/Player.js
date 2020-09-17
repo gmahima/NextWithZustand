@@ -10,7 +10,7 @@ const unsub = usePlayerStore.subscribe(console.log, state => state.players)
 
 const PlayerDiv = styled.div `
 ${tw `
-    flex flex-row p-2 justify-between border-b items-center mt-12
+    flex flex-row p-2 pb-6 justify-between border-b items-center mt-12 last:border-none
 `}
 button {
     ${tw `border border-gray-400 px-1 rounded-lg hover:bg-gray-100 active:bg-gray-300`}

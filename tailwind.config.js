@@ -12,6 +12,9 @@ module.exports = {
           },
       },
     },
-    variants: {},
+    variants: {
+      border: ['responsive', 'hover', 'focus', 'active'],
+      outline: ['responsive', 'focus', 'hover', 'active']
+    },
     plugins: [],
   }
