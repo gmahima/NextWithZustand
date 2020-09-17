@@ -29,6 +29,7 @@ const handleLoadPlayers = async (set, get) => {
   .then(res => res.json())
   .then(players => {
     console.log(players);
+    players.map(p => p.score = 0)
     set({players: players})
 
   })
