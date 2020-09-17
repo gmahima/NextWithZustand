@@ -1,5 +1,6 @@
 import 'tailwindcss/dist/base.min.css'
 import styled, {createGlobalStyle} from 'styled-components'
+import React, {useEffect} from 'react'
 import tw from 'twin.macro';
 import create from 'zustand'
 import { devtools } from 'zustand/middleware'
@@ -23,8 +24,15 @@ body {
   ${tw `bg-gray-100 text-gray-900 sm:text-xl `}
 }
 `
+
+const handleLoadPlayers = (set, get) => {
+  let p = get().players
+  console.log(p)
+}
+
 const playerStore = (set,get) => ({
   players: initialPlayers,
+  loadPlayers: () => {handleLoadPlayers(set, get)},
   addPlayer: (name => set(state => {
     let n = [...state.players]
     let p ={};
@@ -80,6 +88,10 @@ export const useVipStore = create(set => ({
 }))
 
 function MyApp({ Component, pageProps }) {
+  const loadPlayers = usePlayerStore(state => state.loadPlayers)
+  useEffect(() => {
+    loadPlayers()
+}, [])
   
   return (
     <>

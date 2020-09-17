@@ -1,14 +1,16 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {usePlayerStore} from '../pages/_app'
 import tw from 'twin.macro'
 export default function AddPlayerForm() {
     const [val, setVal] = useState('')
     const addPlayer = usePlayerStore(state => state.addPlayer)
+    
     const handleSubmit = (e => {
         e.preventDefault();
         addPlayer(val)
 
     })
+    
     return(
         <form onSubmit={handleSubmit} css={tw `flex space-x-2 self-center`}>
             <input value={val} onChange={(e) => {setVal(e.target.value)}} css={tw `p-2 rounded-lg bg-white outline-none border-2 border-green-400 focus:border-green-300`}></input>
