@@ -45,7 +45,7 @@ export default function Player ({player}) {
     return(
         <PlayerDiv>
             <div>
-                <StyledStar hasHighScore={player.score === highScore}></StyledStar>
+                <StyledStar hasHighScore={player.score === highScore && highScore>0}></StyledStar>
 
             </div>
             

@@ -3,6 +3,7 @@ import styled, {createGlobalStyle} from 'styled-components'
 import tw from 'twin.macro';
 import create from 'zustand'
 import { devtools } from 'zustand/middleware'
+import Head from 'next/head'
 
 const initialPlayers = [
   {
@@ -24,6 +25,17 @@ body {
 `
 const playerStore = (set,get) => ({
   players: initialPlayers,
+  addPlayer: (name => set(state => {
+    let n = [...state.players]
+    let p ={};
+    p.name = name;
+    p.id = (n.length+1).toString();
+    p.score = 0;
+    n.push(p)
+    return ({
+      players: n
+    })
+  })),
   sounds: ['yay', 'wohoo', 'hah!', 'I am the best'],
   highScore: 0,
   setHighScore: (s => set({highScore: s})),
@@ -72,6 +84,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <GlobalStyles/>
+      <Head><title>Zustand Next Scoreboard</title></Head>
       <Component {...pageProps} />
     </>
   )
