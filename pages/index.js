@@ -3,7 +3,7 @@ import Head from 'next/head'
 import styled, {css} from 'styled-components'
 import shallow from 'zustand/shallow'
 import tw from 'twin.macro'
-import {usePlayerStore} from './_app'
+import usePlayerStore from '../stores/usePlayerStore'
 import Player from '../components/Player'
 import AddPlayerForm from '../components/AddPlayer'
 export default function Home() {

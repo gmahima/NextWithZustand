@@ -2,7 +2,8 @@ import styled, {css} from 'styled-components'
 import tw from 'twin.macro';
 import {Plus, Minus} from '@styled-icons/boxicons-regular'
 import {Star} from '@styled-icons/boxicons-solid/Star'
-import {usePlayerStore, useVipStore} from '../pages/_app'
+import usePlayerStore from '../stores/usePlayerStore'
+import useVipStore from '../stores/useVipStore'
 import {Vip} from '@styled-icons/remix-line/Vip'
 
 

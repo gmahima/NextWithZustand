@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import {usePlayerStore} from '../pages/_app'
+import React, {useState} from 'react'
+import usePlayerStore from '../stores/usePlayerStore'
 import tw from 'twin.macro'
 export default function AddPlayerForm() {
     const [val, setVal] = useState('')
