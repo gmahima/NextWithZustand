@@ -1,5 +1,6 @@
 import create from 'zustand'
-import { devtools } from 'zustand/middleware'
+import {devtools} from 'zustand/middleware'
+
 
 const initialPlayers = [
     {
@@ -12,75 +13,47 @@ const initialPlayers = [
         score: 0,
         name: "ron"
     }
-  ]
+]
 
-const handleLoadPlayers = (set, get) => {
-    let p = get().players
-    console.log(p)
+const handleChangePlayerScore = (id, dir, set, get) => {
+    let n = [...get().players]
+    let player = n.find(p => p.id === id);
+    if(dir === 'up') {
+        player.score += 10
+        if(player.score> get().highScore) {
+            set({highScore: player.score})
+        }
+    }
+    else {
+        player.score -= 10
+    }
+    set({
+        players: n
+    })
+
 }
 const handleAddPlayer = (set, get, name) =>{
-  set(state => {
-    let n = [...state.players]
-    let p ={};
-    p.name = name;
-    p.id = (n.length+1).toString();
-    p.score = 0;
-    n.push(p)
-    return ({
-      players: n
-    })
-  })
-}
-
-const handleIncrementPlayerScore = (set, get, id) => {
-  set(state => {
-    console.log(state.players)
-    const n = [...state.players]
-    const player = n.find(p => p.id === id)
-    console.log(player)
-    player.score = player.score+10;
-    if(player.score > state.highScore) {
+  let n = [...get().players]
+  let p ={};
+  p.name = name;
+  p.id = (n.length+1).toString();
+  p.score = 0;
+  n.push(p)
+    set(state => {
       return ({
-        players: n,
-        highScore: player.score
+        players: n
       })
-    }
-    return ({
-      players: n
     })
-
-  })
-}
-
-const handleDecrementPlayerScore = (set, get, id) => {
-  set(state => {
-    console.log(state.players)
-    const n = [...state.players]
-    const player = n.find(p => p.id === id)
-    console.log(player)
-    player.score = player.score-10;
-    return ({
-      players: n
-    })
-
-  })
-}
-
-const sounds = ['yay', 'wohoo', 'hah!', 'I am the best']
+  }
   
-const playerStore = (set,get) => ({
+
+const store = (set, get) => ({
     players: initialPlayers,
-    loadPlayers: () => {handleLoadPlayers(set, get)},
-    addPlayer: (name) => {handleAddPlayer(set,get, name)},
-    sounds: sounds,
     highScore: 0,
-    setHighScore: (s => set({highScore: s})),
-    incrementPlayerScore: (id) => {handleIncrementPlayerScore(set,get, id)},
-    decrementPlayerScore: (id) => {handleDecrementPlayerScore(set,get, id)},
-    deleteEverything: () => (set ({}, true)) // true replaces state model instead of merging it
-  })
-  
-const usePlayerStore = create(devtools(playerStore))
+    addPlayer: (name) => {handleAddPlayer(set, get, name)},
+    changePlayerScore : (id, dir) => {handleChangePlayerScore(id, dir, set, get)}
+})
+
+const usePlayerStore = create(devtools(store))
 
 export default usePlayerStore
-  

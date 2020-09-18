@@ -1,9 +1,8 @@
 import 'tailwindcss/dist/base.min.css'
 import styled, {createGlobalStyle} from 'styled-components'
-import React, {useEffect} from 'react'
 import tw from 'twin.macro';
 import Head from 'next/head'
-import usePlayerStore from '../stores/usePlayerStore'
+
 
 const GlobalStyles = createGlobalStyle`
 body {
@@ -12,10 +11,8 @@ body {
 `
 
 function MyApp({ Component, pageProps }) {
-  const loadPlayers = usePlayerStore(state => state.loadPlayers)
-  useEffect(() => {
-    loadPlayers()
-}, [])
+
+
   
   return (
     <>

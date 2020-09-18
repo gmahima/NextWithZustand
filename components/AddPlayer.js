@@ -7,8 +7,12 @@ export default function AddPlayerForm() {
     
     const handleSubmit = (e => {
         e.preventDefault();
-        addPlayer(val)
+        if(val !== '') {
+            addPlayer(val)
+            setVal('')
 
+        }
+        
     })
     
     return(

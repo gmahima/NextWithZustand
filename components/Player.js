@@ -38,8 +38,7 @@ ${props => {
 `
 export default function Player ({player}) {
     const vips = useVipStore(state => state.vips)
-    const inc = usePlayerStore(state => state.incrementPlayerScore)
-    const dec = usePlayerStore(state => state.decrementPlayerScore)
+    const changePlayerScore = usePlayerStore(state => state.changePlayerScore)
     const highScore = usePlayerStore(state => state.highScore)
 
 
@@ -52,9 +51,9 @@ export default function Player ({player}) {
             
             <h1> <span><StyledVip isVip={vips.includes(player.id)}></StyledVip></span> {player.name}</h1>
             <div>
-                <button onClick={() => {inc(player.id)}}><Plus css={tw `w-4 h-4 text-gray-600`}></Plus></button>
+                <button onClick={() => {changePlayerScore(player.id, "up")}}><Plus css={tw `w-4 h-4 text-gray-600`}></Plus></button>
                 <span css={tw `align-middle mx-4`}>{player.score}</span>
-                <button onClick={() => {dec(player.id)}}><Minus css={tw `w-4 h-4 text-gray-600`}></Minus></button>
+                <button onClick={() => {changePlayerScore(player.id, "down")}}><Minus css={tw `w-4 h-4 text-gray-600`}></Minus></button>
             </div>
             
         </PlayerDiv>
