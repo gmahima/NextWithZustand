@@ -40,9 +40,6 @@ const handleIncrementPlayerScore = (set, get, id) => {
     console.log(player)
     player.score = player.score+10;
     if(player.score > state.highScore) {
-      const sounds = get().sounds;
-      const i = Math.floor(Math.random()*sounds.length); 
-      console.log(player.name+ " says: "+ sounds[i])
       return ({
         players: n,
         highScore: player.score
