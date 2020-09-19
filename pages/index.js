@@ -6,8 +6,10 @@ import tw from 'twin.macro'
 import usePlayerStore from '../stores/usePlayerStore'
 import Player from '../components/Player'
 import AddPlayerForm from '../components/AddPlayer'
+
+const getState = state => ({players: state.players, highScore: state.highScore, deleteEverything:state.deleteEverything})
 export default function Home() {
-  const {players, highScore, deleteEverything} = usePlayerStore(state => ({players: state.players, highScore: state.highScore, deleteEverything:state.deleteEverything}), shallow)
+  const {players, highScore, deleteEverything} = usePlayerStore(getState, shallow)
   
   return (
 

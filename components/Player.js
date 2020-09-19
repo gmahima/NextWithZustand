@@ -36,10 +36,14 @@ ${props => {
     }
 }}
 `
+
+const getVips = state => state.vips
+const getChangePlayerScore = state => state.changePlayerScore
+const getHighScore =  state => state.highScore
 export default function Player ({player}) {
-    const vips = useVipStore(state => state.vips)
-    const changePlayerScore = usePlayerStore(state => state.changePlayerScore)
-    const highScore = usePlayerStore(state => state.highScore)
+    const vips = useVipStore(getVips)
+    const changePlayerScore = usePlayerStore(getChangePlayerScore)
+    const highScore = usePlayerStore(getHighScore)
 
 
     return(

@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import usePlayerStore from '../stores/usePlayerStore'
 import tw from 'twin.macro'
+
+const getAddPlayer = state => state.addPlayer
 export default function AddPlayerForm() {
     const [val, setVal] = useState('')
-    const addPlayer = usePlayerStore(state => state.addPlayer)
+    const addPlayer = usePlayerStore(getAddPlayer)
     
     const handleSubmit = (e => {
         e.preventDefault();
