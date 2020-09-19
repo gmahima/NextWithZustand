@@ -7,7 +7,7 @@ import Head from 'next/head'
 
 const GlobalStyles = createGlobalStyle`
 body {
-  ${tw `bg-gray-100 text-gray-900 sm:text-xl `}
+  ${tw `bg-gray-100 text-gray-900 sm:text-xl h-screen overflow-hidden`}
 }
 `
 
