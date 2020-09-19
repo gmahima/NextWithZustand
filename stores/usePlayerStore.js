@@ -80,54 +80,33 @@ const handleAddPlayer = (set, get, name) =>{
   })
 }
 
-const handleIncrementPlayerScore = (set, get, id) => {
-  set(state => {
-    console.log(state.players)
-    const n = [...state.players]
-    const player = n.find(p => p.id === id)
-    console.log(player)
-    player.score = player.score+10;
-    if(player.score > state.highScore) {
-      const sounds = get().sounds;
-      const i = Math.floor(Math.random()*sounds.length); 
-      console.log(player.name+ " says: "+ sounds[i])
-      return ({
-        players: n,
-        highScore: player.score
-      })
-    }
-    return ({
-      players: n
-    })
+const handleChangePlayerScore = (id, dir, get, set) => {
+  let n = [...get().players]
+  let player = n.find(p => p.id === id)
+  if(dir === 'up') {
+      player.score += 10;
+      if(player.score> get().highScore) {
+          set({highScore: player.score})
+      }
 
-  })
+  }
+  else {
+      player.score -= 10;
+  }
+  set({players: n})
+
+  console.log(n)
 }
 
-const handleDecrementPlayerScore = (set, get, id) => {
-  set(state => {
-    console.log(state.players)
-    const n = [...state.players]
-    const player = n.find(p => p.id === id)
-    console.log(player)
-    player.score = player.score-10;
-    return ({
-      players: n
-    })
 
-  })
-}
-
-const sounds = ['yay', 'wohoo', 'hah!', 'I am the best']
   
 const playerStore = (set,get) => ({
     players: initialPlayers,
     loadPlayers: async () => { await handleLoadPlayers(set, get)},
     addPlayer: (name) => {handleAddPlayer(set,get, name)},
-    sounds: sounds,
     highScore: 0,
     setHighScore: (s => set({highScore: s})),
-    incrementPlayerScore: (id) => {handleIncrementPlayerScore(set,get, id)},
-    decrementPlayerScore: (id) => {handleDecrementPlayerScore(set,get, id)},
+    changePlayerScore: ((id, dir) => {handleChangePlayerScore(id, dir, get, set)}),
     deleteEverything: () => (set ({}, true)) // true replaces state model instead of merging it
   })
   
