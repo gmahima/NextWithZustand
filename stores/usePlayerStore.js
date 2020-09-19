@@ -28,15 +28,14 @@ const handleLoadPlayers = async (set, get) => {
   })
   .then(res => res.json())
   .then(players => {
-    console.log(players);
     players.map(p => p.score = 0)
     set({players: players})
 
   })
   .catch(error =>{console.log(error)})
 }
-const storePlayer = (p) => {
-  fetch(Url, {
+const storePlayer = async (p) => {
+  await fetch(Url, {
     method: 'POST',
     body: JSON.stringify(p),
     headers: {
@@ -62,22 +61,17 @@ const storePlayer = (p) => {
   .then(res => console.log(res))
   .catch(error =>{console.log(error)})
 }
-const handleAddPlayer = (set, get, name) =>{
-  set(state => {
-    let n = [...state.players]
-    let p ={};
-    p.name = name;
-    p.id = (n.length+1).toString();
-    storePlayer(p)
+const handleAddPlayer = async (set, get, name) =>{
+  let n = [...get().players]
+  let p ={}
+  p.name = name
+  p.id = (n.length+1).toString();
+  await storePlayer(p).then(() => {
     p.score = 0;
     n.push(p)
-    
-
-
-    return ({
-      players: n
-    })
+    set({players: n})
   })
+  .catch(e => console.log(e))
 }
 
 const handleChangePlayerScore = (id, dir, get, set) => {
