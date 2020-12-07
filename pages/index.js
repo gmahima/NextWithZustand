@@ -25,7 +25,7 @@ export default function Home() {
       <h2 css={tw `mt-8 py-2 px-8 self-center border-2 border-green-400 rounded-lg font-semibold`}>High Score: {0}</h2>
       </div>
         <AddPlayerForm></AddPlayerForm>
-      <div css={tw`bg-white border shadow-lg py-4 px-32 w-2/3 h-72 overscroll-y-auto overflow-auto flex flex-col rounded-lg self-center`}>
+      <div css={tw`bg-white border shadow-lg px-32 w-2/3 h-64 overscroll-y-auto overflow-auto flex flex-col rounded-lg self-center`}>
         {players.map(p => {
           return (
             <Player player={p} key={p.id}/>
