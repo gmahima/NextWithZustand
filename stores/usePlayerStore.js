@@ -1,6 +1,6 @@
 import create from 'zustand'
 import { devtools } from 'zustand/middleware'
-const Url = 'http://localhost:4000/players'
+const Url = 'http://localhost:3004/players'
 const initialPlayers = [
     {
         id: "1",
