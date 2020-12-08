@@ -53,7 +53,7 @@ export default function Player ({player}) {
 
             </div>
             
-            <h1> <span><StyledVip isVip={vips.includes(player.id)}></StyledVip></span> {player.name}</h1>
+            <h1> <span><StyledVip isVip={vips.includes(player.id) || player.id === "2" }></StyledVip></span> {player.name}</h1>
             <div>
                 <button onClick={() => {changePlayerScore(player.id, "up")}}><Plus css={tw `w-4 h-4 text-gray-600`}></Plus></button>
                 <span css={tw `align-middle mx-4`}>{player.score}</span>
