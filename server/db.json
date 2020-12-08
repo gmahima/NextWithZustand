@@ -1,0 +1,61 @@
+{
+  "players": [
+    {
+      "name": "Harry",
+      "id": "1"
+    },
+    {
+      "name": "Hermione",
+      "id": "2"
+    },
+    {
+      "name": "Ron",
+      "id": "3"
+    },
+    {
+      "name": "Neville",
+      "id": "4"
+    },
+    {
+      "name": "Ginny",
+      "id": "5"
+    },
+    {
+      "name": "Luna",
+      "id": "6"
+    },
+    {
+      "name": "Fred",
+      "id": "7"
+    },
+    {
+      "name": "George",
+      "id": "8"
+    },
+    {
+      "name": "Dobby",
+      "id": "9"
+    },
+    {
+      "name": "Severus",
+      "id": "10"
+    },
+    {
+      "name": "Voldy",
+      "id": "11"
+    },
+    {
+      "name": "Bellatrix",
+      "id": "12"
+    },
+    {
+      "name": "Dumbledore",
+      "id": "13"
+    }
+  ],
+  "vips": [
+    "2",
+    "4",
+    "8"
+  ]
+}
