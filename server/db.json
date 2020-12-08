@@ -33,7 +33,7 @@
       "id": "8"
     },
     {
-      "name": "Harry",
+      "name": "Dobby",
       "id": "9"
     },
     {
@@ -51,10 +51,6 @@
     {
       "name": "Dumbledore",
       "id": "13"
-    },
-    {
-      "name": "Bellatrix",
-      "id": "14"
     }
   ],
   "vips": [
