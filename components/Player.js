@@ -37,7 +37,9 @@ ${props => {
 export default function Player ({player}) {
     const vips = ['2','5']
     const highScore = 10
-
+    const changePlayerScore = (id, dir) => {
+        console.log(id, dir)
+    }
 
     return(
         <PlayerDiv>
@@ -48,9 +50,9 @@ export default function Player ({player}) {
             
             <h1> <span><StyledVip isVip={vips.includes(player.id)}></StyledVip></span> {player.name}</h1>
             <div>
-                <button onClick={() => {console.log(player.id)}}><Plus css={tw `w-4 h-4 text-gray-600`}></Plus></button>
+                <button onClick={() => {changePlayerScore(player.id, "up")}}><Plus css={tw `w-4 h-4 text-gray-600`}></Plus></button>
                 <span css={tw `align-middle mx-4`}>{player.score}</span>
-                <button onClick={() => {console.log(player.id)}}><Minus css={tw `w-4 h-4 text-gray-600`}></Minus></button>
+                <button onClick={() => {changePlayerScore(player.id, "down")}}><Minus css={tw `w-4 h-4 text-gray-600`}></Minus></button>
             </div>
             
         </PlayerDiv>
