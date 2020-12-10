@@ -21,7 +21,7 @@ h1 {
 }
 `
 const StyledStar = styled(Star) `
-${tw `text-gray-400 w-8 h-8`}
+${tw `text-gray-400 w-4 lg:w-8 lg:h-8`}
 ${props => {
     if(props.hasHighScore) {
         return tw`text-green-400 `
@@ -29,7 +29,7 @@ ${props => {
 }}
 `
 const StyledVip = styled(Vip) `
-${tw `w-6 h-6 text-gray-400 hidden`}
+${tw `w-4 lg:w-6 lg:h-6 text-gray-400 hidden`}
 ${props => {
     if(props.isVip) {
         return (tw `inline`)
@@ -53,11 +53,11 @@ export default function Player ({player}) {
 
             </div>
             
-            <h1> <span><StyledVip isVip={vips.includes(player.id) || player.id === "2" }></StyledVip></span> {player.name}</h1>
-            <div>
-                <button onClick={() => {changePlayerScore(player.id, "up")}}><Plus css={tw `w-4 h-4 text-gray-600`}></Plus></button>
-                <span css={tw `align-middle mx-4`}>{player.score}</span>
-                <button onClick={() => {changePlayerScore(player.id, "down")}}><Minus css={tw `w-4 h-4 text-gray-600`}></Minus></button>
+            <h1 css={tw `text-xs lg:text-lg`}> <span><StyledVip isVip={vips.includes(player.id) || player.id === "2" }></StyledVip></span> {player.name}</h1>
+            <div css={tw `flex items-center`}>
+                <button onClick={() => {changePlayerScore(player.id, "up")}}><Plus css={tw `w-1 lg:w-4 lg:h-4 text-gray-600`}></Plus></button>
+                <span css={tw `align-middle text-xs lg:text-lg w-12`}>{player.score}</span>
+                <button onClick={() => {changePlayerScore(player.id, "down")}}><Minus css={tw `w-1 lg:w-4 lg:h-4 text-gray-600`}></Minus></button>
             </div>
             
         </PlayerDiv>
