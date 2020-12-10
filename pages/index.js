@@ -19,7 +19,7 @@ export default function Home() {
  
   return (
 
-    <div css={tw `flex flex-col p-20 md:p-32 space-y-8 text-center`}>
+    <div css={tw `flex flex-col p-20 md:p-12 space-y-8 text-center`}>
       <div css={tw `flex flex-col`}>
       <h1 css={tw `text-black text-3xl md:text-6xl`}>Scoreboard</h1>
       <h2 css={tw `mt-2 sm:mt-8 py-1 px-2 md:py-2 md:px-8  self-center border-2 border-green-400 rounded-lg font-semibold`}>High Score: {0}</h2>
