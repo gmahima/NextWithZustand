@@ -13,14 +13,14 @@ export default function Home() {
   
   return (
 
-    <div css={tw `flex flex-col sm:px-32 sm:space-y-8 text-center justify-center items-center h-screen`}>
+    <div css={tw `flex flex-col p-20 md:p-32 space-y-8 text-center`}>
       {/* <button  css={tw `border-2`} onClick={deleteEverything}>delete everything</button> */}
       <div css={tw `flex flex-col`}>
-      <h1 css={tw `text-black text-6xl`}>Scoreboard</h1>
-      <h2 css={tw `mt-8 py-2 px-8 self-center border-2 border-green-400 rounded-lg font-semibold`}>High Score: {highScore}</h2>
+      <h1 css={tw `text-black text-3xl md:text-6xl`}>Scoreboard</h1>
+      <h2 css={tw `mt-2 sm:mt-8 py-1 px-2 md:py-2 md:px-8  self-center border-2 border-green-400 rounded-lg font-semibold`}>High Score: {highScore}</h2>
       </div>
         <AddPlayerForm></AddPlayerForm>
-      <div css={tw`bg-white border shadow-lg px-32 w-2/3 h-64 overscroll-y-auto overflow-auto flex flex-col rounded-lg self-center`}>
+      <div css={tw`bg-white border shadow-lg px-4 w-64 sm:w-2/3 md:px-32 md:w-2/3 md:h-64 overscroll-y-auto overflow-auto flex flex-col rounded-lg self-center`}>
         {players.map(p => {
           return (
             <Player player={p} key={p.id}/>
