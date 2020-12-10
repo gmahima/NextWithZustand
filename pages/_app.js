@@ -7,7 +7,7 @@ import usePlayerStore from '../stores/usePlayerStore'
 import useVipStore from '../stores/useVipStore'
 const GlobalStyles = createGlobalStyle`
 body {
-  ${tw `bg-gray-100 text-gray-900 sm:text-xl h-screen`}
+  ${tw `bg-gray-100 text-gray-900 sm:text-xl`}
 }
 `
 
