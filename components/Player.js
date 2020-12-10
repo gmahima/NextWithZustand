@@ -55,9 +55,9 @@ export default function Player ({player}) {
             
             <h1 css={tw `text-xs lg:text-lg`}> <span><StyledVip isVip={vips.includes(player.id) || player.id === "2" }></StyledVip></span> {player.name}</h1>
             <div css={tw `flex items-center`}>
-                <button onClick={() => {changePlayerScore(player.id, "up")}}><Plus css={tw `w-1 lg:w-4 lg:h-4 text-gray-600`}></Plus></button>
+                <button onClick={() => {changePlayerScore(player.id, "up")}}><Plus css={tw `w-2 lg:w-4 lg:h-4 text-gray-600`}></Plus></button>
                 <span css={tw `align-middle text-xs lg:text-lg w-12`}>{player.score}</span>
-                <button onClick={() => {changePlayerScore(player.id, "down")}}><Minus css={tw `w-1 lg:w-4 lg:h-4 text-gray-600`}></Minus></button>
+                <button onClick={() => {changePlayerScore(player.id, "down")}}><Minus css={tw `w-2 lg:w-4 lg:h-4 text-gray-600`}></Minus></button>
             </div>
             
         </PlayerDiv>

@@ -13,7 +13,7 @@ export default function Home() {
   
   return (
 
-    <div css={tw `h-full flex flex-col p-20 md:p-20 space-y-8 text-center`}>
+    <div css={tw `flex flex-col justify-center px-20 md:px-20 space-y-8 text-center h-screen`}>
       {/* <button  css={tw `border-2`} onClick={deleteEverything}>delete everything</button> */}
       <div css={tw `flex flex-col`}>
       <h1 css={tw `text-black text-3xl md:text-6xl`}>Scoreboard</h1>
