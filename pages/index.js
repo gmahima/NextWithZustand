@@ -6,17 +6,20 @@ import tw from 'twin.macro'
 import usePlayerStore from '../stores/usePlayerStore'
 import Player from '../components/Player'
 import AddPlayerForm from '../components/AddPlayer'
-
+import {useSampleStore} from '../stores/useSampleStore'
 const getState = state => ({players: state.players, highScore: state.highScore, deleteEverything:state.deleteEverything})
+const getSampleState = state => ({bears: state.bears, increase: state.increase})
 export default function Home() {
   const {players, highScore, deleteEverything} = usePlayerStore(getState, shallow)
-  
+  const {bears, increase} = useSampleStore(getSampleState, shallow)
   return (
 
     <div css={tw `flex flex-col justify-center px-20 md:px-20 space-y-8 text-center h-screen`}>
       {/* <button  css={tw `border-2`} onClick={deleteEverything}>delete everything</button> */}
       <div css={tw `flex flex-col`}>
       <h1 css={tw `text-black text-3xl md:text-6xl`}>Scoreboard</h1>
+      <h1 css={tw `text-black text-2xl border self-center p-2 rounded bg-green-400 cursor-pointer`} onClick={() => {increase(10)}}>bears: {bears}</h1>
+      {/* <h2 cs={tw `bg-red-400`} onClick={() => {increase(10)}}>{bears}</h2> */}
       <h2 css={tw `mt-2 sm:mt-8 py-1 px-2 md:py-2 md:px-8  self-center border-2 border-green-400 rounded-lg font-semibold`}>High Score: {highScore}</h2>
       </div>
         <AddPlayerForm></AddPlayerForm>
